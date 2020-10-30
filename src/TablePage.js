@@ -1,19 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 import TableList from './TableList';
 import Form from './Form';
-import TablePage from './TablePage';
-import Autorization from './Autorization';
-import{
-    Route,
-    Switch,
-    BrowserRouter
-} from "react-router-dom"
 
 
-
-class App extends Component {
+class TablePage extends Component {
   state = {
       characters: []
   };
@@ -36,17 +26,19 @@ class App extends Component {
       const { characters } = this.state;
       
       return (
-          <BrowserRouter>
-          <Switch>
-              <Route exact path="/" component={Autorization}/>
-              <Route exact path="/users" component={TablePage}/>
-          </Switch>
-          </BrowserRouter>
+          <div className="container">
+              <Form handleSubmit={this.handleSubmit} />
+              <br></br>
               
-          
+              <TableList
+                  characterData={characters}
+                  removeCharacter={this.removeCharacter}
+              />
+              <h1 class= "who-made-this">Morgaev Artem</h1>
+          </div>
       );
   }
 }
 
 
-export default App;
+export default TablePage;

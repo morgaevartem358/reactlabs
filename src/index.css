@@ -580,3 +580,7 @@ caption {
 @media (min-width: 600px) {
   .contain-table {
     width: 100%; } }
+.who-made-this { 
+    position: relative;
+    bottom: 100%;
+}

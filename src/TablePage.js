@@ -5,7 +5,12 @@ import Form from './Form';
 
 class TablePage extends Component {
   state = {
-      characters: []
+      characters: [{
+        firstname:'Ivan', lastname:'Ivanov', email:'123@mail.ru'
+      },
+      {
+        firstname:'Petr', lastname:'PEtrov', email:'45678@mail.ru'
+      }]
   };
 
   removeCharacter = index => {
@@ -31,14 +36,13 @@ class TablePage extends Component {
               <br></br>
               
               <TableList
-                  characterData={characters}
-                  removeCharacter={this.removeCharacter}
               />
               <h1 class= "who-made-this">Morgaev Artem</h1>
           </div>
       );
   }
 }
+
 
 
 export default TablePage;

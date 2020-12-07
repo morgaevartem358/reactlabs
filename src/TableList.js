@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { removeCharacter } from './actions';
 
 const TableHeader = () => { 
     return (
@@ -14,13 +16,13 @@ const TableHeader = () => {
 }
 
 const TableBody = props => { 
-    const rows = props.characterData.map((row, index) => {
+    const rows = props.characterData.map((row) => {
         return (
-            <tr key={index}>
+            <tr key={row.id}>
                 <td>{row.firstname}</td>
                 <td>{row.lastname}</td>
                 <td>{row.email}</td>
-                <td><button onClick={() => props.removeCharacter(index)}>Delete</button></td>
+                <td><button onClick={() => props.removeCharacter(row.id)}>Delete</button></td>
             </tr>
         );
     });
@@ -38,4 +40,16 @@ const TableList = (props) => {
         );
 }
 
-export default TableList;
+const mapStateToProps = (state) => {
+    return{
+        characterData: state
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return{
+        removeCharacter: (id) => dispatch(removeCharacter(id))
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps) (TableList);
